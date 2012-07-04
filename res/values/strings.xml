@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, MementoMoriActivity!</string>
+    <string name="app_name">Memento Mori</string>
+    <string name="mmwidget_info">Memento Mori</string>
+    <string name="pick_date">Change your birthday</string>
+    <string name="deathlabel">You expect to live for&#160;</string>
+    <string name="wiki">Wikipedia\'s list of countries by life expectancy: http://en.wikipedia.org/wiki/List_of_countries_by_life_expectancy#List_by_the_United_Nations_.282005.E2.80.932010.29</string>
+</resources>
