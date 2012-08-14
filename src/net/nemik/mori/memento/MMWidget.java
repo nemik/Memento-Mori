@@ -18,6 +18,8 @@ public class MMWidget extends AppWidgetProvider
 	private int m_month;
 	private int m_day;
 	private int expected_years;
+	private String part1;
+	private String part2;
 	
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
 			int[] appWidgetIds)
@@ -28,6 +30,8 @@ public class MMWidget extends AppWidgetProvider
         m_month = settings.getInt("month", 1);
         m_day = settings.getInt("day", 1);
         expected_years = settings.getInt("expected_years", 72);
+        part1 = settings.getString("part1", context.getString(R.string.wall_part1));
+        part2 = settings.getString("part2", context.getString(R.string.wall_part2));
         
 		DateMidnight deathdate = new DateMidnight(m_year+expected_years, m_month, m_day);
 		DateTime now = new DateTime();
@@ -42,7 +46,7 @@ public class MMWidget extends AppWidgetProvider
 			RemoteViews views = new RemoteViews(context.getPackageName(),
 					R.layout.mmwidget);
 			
-			views.setTextViewText(R.id.mmwidgetlabel, remains+" days until you die");
+			views.setTextViewText(R.id.mmwidgetlabel, part1 + remains + part2);
 			appWidgetManager.updateAppWidget(appWidgetId, views);
 		}
 	}

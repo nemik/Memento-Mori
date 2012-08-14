@@ -27,10 +27,14 @@ public class MementoMoriActivity extends Activity
 	private int m_month;
 	private int m_day;
 	private int expected_years;
-
+	private String part1;
+	private String part2;
+	
 	TextView bdaylabel;
 	TextView eyearslabel;
 	EditText e_years_edit;
+	EditText part1_edit;
+	EditText part2_edit;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) 
@@ -43,6 +47,8 @@ public class MementoMoriActivity extends Activity
         m_month = settings.getInt("month", 1);
         m_day = settings.getInt("day", 1);
         expected_years = settings.getInt("expected_years",expected_years);
+        part1 = settings.getString("part1", getString(R.string.wall_part1));
+        part2 = settings.getString("part2", getString(R.string.wall_part2));
         
         setContentView(R.layout.main);
         
@@ -54,6 +60,12 @@ public class MementoMoriActivity extends Activity
         
         e_years_edit = (EditText) findViewById(R.id.e_years);
         e_years_edit.setText(new String(""+expected_years));
+        
+        part1_edit = (EditText) findViewById(R.id.part1);
+        part1_edit.setText(part1);
+        
+        part2_edit = (EditText) findViewById(R.id.part2);
+        part2_edit.setText(part2);
 		
         expected_years = new Integer(e_years_edit.getText().toString());
         
@@ -72,6 +84,8 @@ public class MementoMoriActivity extends Activity
 			eyears_s="0";
 		}
         editor.putInt("expected_years",new Integer(eyears_s));
+        editor.putString("part1", part1_edit.getText().toString());
+        editor.putString("part2", part2_edit.getText().toString());
         editor.commit();
         //eyearslabel.setText(String.format(getString(R.string.deathlabel), expected_years));  
         updateAllWidgets();
